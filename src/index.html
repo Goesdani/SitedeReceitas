@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChefDupla - Gestão e Preparo de Receitas Artesanais</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body class="bg-amber-50/50 text-stone-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl" role="img" aria-label="Chapéu de Chef">👨‍🍳</span>
+                <span class="text-xl font-bold tracking-tight text-amber-700">ChefDupla - Pão Rústico de Fermentação Natural</span>
+            </div>
+            <nav aria-label="Navegação principal">
+                <ul class="flex flex-wrap justify-center gap-6 text-sm font-medium text-stone-600">
+                    <li><a href="#proposito" class="hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded px-1 transition-colors">Propósito</a></li>
+                    <li><a href="#etapas" class="hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded px-1 transition-colors">Etapas &amp; Ingredientes</a></li>
+                    <li><a href="#resultados" class="hover:text-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 rounded px-1 transition-colors">Métricas &amp; Resultados</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-grow space-y-16 w-full">
+
+        <!-- Seção 1: Propósito da Aplicação -->
+        <section id="proposito" class="bg-white rounded-2xl p-8 shadow-sm border border-amber-100 grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-4">
+                <h1 class="text-3xl font-extrabold text-stone-900 leading-tight">Painel Inteligente de Preparo Culinário</h1>
+                <p class="text-stone-600 leading-relaxed">
+                    Este projeto foi desenvolvido em dupla para otimizar o planejamento de receitas artesanais complexas. Nossa aplicação processa automaticamente os tempos de <strong>seis etapas essenciais</strong> de produção (como mistura, autólise, sova, fermentação, divisão e forneamento).
+                </p>
+                <p class="text-stone-600 leading-relaxed">
+                    Utilizamos uma referência de limite por etapa fixada em <strong class="text-amber-800">120 minutos (2 horas)</strong> para auditar o fluxo de trabalho, calcular o tempo total acumulado, a média por procedimento e classificar a complexidade operacional da receita em tempo real.
+                </p>
+            </div>
+            <div class="bg-amber-100/60 rounded-xl p-6 border border-amber-200/60 space-y-3">
+                <h2 class="text-lg font-bold text-amber-900 flex items-center gap-2">
+                    <span>📋</span> Regras de Avaliação &amp; Dados
+                </h2>
+                <ul class="space-y-2 text-sm text-stone-700 list-disc list-inside">
+                    <li><strong>6 Etapas Monitoradas:</strong> Mistura, Autólise, Sova, Fermentação, Modelagem e Forneamento.</li>
+                    <li><strong>Limite de Referência:</strong> 120 minutos por etapa individual.</li>
+                    <li><strong>Métricas Calculadas:</strong> Soma total, média aritmética, contagem de etapas críticas e selo de classificação.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção 2: Informações, Cards e Orientações -->
+        <section id="etapas" class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl font-bold text-stone-900">As 6 Etapas da Receita &amp; Ingredientes</h2>
+                <p class="text-stone-600 text-sm">Acompanhe abaixo o detalhamento técnico de cada preparação, seus respectivos tempos cronometrados e os cuidados de organização fundamentais.</p>
+            </div>
+
+            <!-- Grade de Cards (Grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <article class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Etapa 1</span>
+                            <span class="text-sm font-bold text-stone-700">🕒 15 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Mistura Inicial</h3>
+                        <p class="text-sm text-stone-600 mb-4">União homogênea da farinha de trigo rústica, água filtrada e fermento natural (levain) até completa hidratação.</p>
+                        <div class="border-t border-stone-100 pt-3 text-xs text-stone-500 space-y-1">
+                            <p><strong>Ingredientes:</strong> 500g Farinha, 350ml Água, 100g Levain.</p>
+                            <p><strong>Organização:</strong> Higienize a bancada e deixe os insumos pesados previamente (mise en place).</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Etapa 2</span>
+                            <span class="text-sm font-bold text-stone-700">🕒 45 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Autólise</h3>
+                        <p class="text-sm text-stone-600 mb-4">Repouso da massa sem sal para desenvolvimento inicial da rede de glúten e absorção ideal de água.</p>
+                        <div class="border-t border-stone-100 pt-3 text-xs text-stone-500 space-y-1">
+                            <p><strong>Ingredientes:</strong> Mistura anterior (sem sal e sem o restante da água).</p>
+                            <p><strong>Organização:</strong> Cubra o bowl com pano úmido para evitar ressecamento da superfície.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Etapa 3</span>
+                            <span class="text-sm font-bold text-stone-700">🕒 30 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Sova &amp; Incorporação de Sal</h3>
+                        <p class="text-sm text-stone-600 mb-4">Adição do sal marinho refinado com dobras sequenciais para conferir elasticidade e estrutura à massa.</p>
+                        <div class="border-t border-stone-100 pt-3 text-xs text-stone-500 space-y-1">
+                            <p><strong>Ingredientes:</strong> 10g Sal marinho, 30ml Água residual.</p>
+                            <p><strong>Organização:</strong> Mantenha as mãos levemente umedecidas para evitar que a massa grude.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Etapa 4</span>
+                            <span class="text-sm font-bold text-stone-700">🕒 240 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Fermentação em Bulk</h3>
+                        <p class="text-sm text-stone-600 mb-4">Primeira fermentação longa com dobras a cada 60 minutos para desenvolvimento de sabor e alvéolos.</p>
+                        <div class="border-t border-stone-100 pt-3 text-xs text-stone-500 space-y-1">
+                            <p><strong>Ingredientes:</strong> Massa em fermentação ativa.</p>
+                            <p><strong>Organização:</strong> Controle a temperatura ambiente (ideal entre 24°C e 26°C).</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Etapa 5</span>
+                            <span class="text-sm font-bold text-stone-700">🕒 20 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Divisão &amp; Modelagem</h3>
+                        <p class="text-sm text-stone-600 mb-4">Divisão dos filamentos, pré-modelagem redonda e descanso curto antes da modelagem final em bannetons.</p>
+                        <div class="border-t border-stone-100 pt-3 text-xs text-stone-500 space-y-1">
+                            <p><strong>Ingredientes:</strong> Farinha de arroz (para polvilhar).</p>
+                            <p><strong>Organização:</strong> Utilize espátula de corte limpa e polvilhe os cestos com farinha de arroz.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-amber-100 text-amber-800 px-2.5 py-1 rounded-full">Etapa 6</span>
+                            <span class="text-sm font-bold text-stone-700">🕒 45 min</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-2">Forneamento</h3>
+                        <p class="text-sm text-stone-600 mb-4">Assadura em forno pré-aquecido em alta temperatura com panela de ferro para vapor controlado.</p>
+                        <div class="border-t border-stone-100 pt-3 text-xs text-stone-500 space-y-1">
+                            <p><strong>Ingredientes:</strong> Gelo (para vapor opcional).</p>
+                            <p><strong>Organização:</strong> Luvas térmicas profissionais e lâmina (lamê) esterilizada para cortes.</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Seção 3: Resultados Calculados pelo JavaScript -->
+        <section id="resultados" class="bg-gradient-to-br from-amber-700 to-amber-900 text-white rounded-2xl p-8 shadow-md space-y-6">
+            <div class="max-w-2xl">
+                <h2 class="text-2xl font-bold mb-2">Métricas e Classificação da Receita</h2>
+                <p class="text-amber-100 text-sm">Valores processados automaticamente pelo motor JavaScript do sistema com base nos tempos individuais cadastrados.</p>
+            </div>
+
+            <!-- Grid de Indicadores -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+                    <span class="block text-xs uppercase tracking-wider text-amber-200 mb-1">Tempo Total</span>
+                    <span id="res-total" class="text-3xl font-extrabold text-white">Carregando...</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+                    <span class="block text-xs uppercase tracking-wider text-amber-200 mb-1">Média por Etapa</span>
+                    <span id="res-media" class="text-3xl font-extrabold text-white">Carregando...</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+                    <span class="block text-xs uppercase tracking-wider text-amber-200 mb-1">Etapas &gt; 120 min</span>
+                    <span id="res-acima" class="text-3xl font-extrabold text-white">Carregando...</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/20">
+                    <span class="block text-xs uppercase tracking-wider text-amber-200 mb-1">Classificação Final</span>
+                    <span id="res-classificacao" class="text-xl font-bold text-amber-300">Carregando...</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-stone-900 text-stone-400 py-8 mt-16 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-center md:text-left">
+            <div>
+                <p class="font-medium text-stone-200">Projeto Desenvolvido em Dupla — Encontro 15</p>
+                <p class="text-xs text-stone-400 mt-1">Desenvolvimento Web Responsivo com HTML5, Tailwind CSS e JavaScript Puro.</p>
+            </div>
+            <div class="text-stone-300 font-medium">
+                <p>Integrantes: <span class="text-amber-400">[Nome Integrante 1]</span> &amp; <span class="text-amber-400">[Nome Integrante 2]</span></p>
+                <p class="text-xs text-stone-400 mt-1">Turma: <span class="text-stone-300">[Sua Turma]</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="./script.js" defer></script>
+</body>
+</html>
