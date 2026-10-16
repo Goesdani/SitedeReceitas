@@ -1,4 +1,4 @@
-# ChefDupla — Organizador de Receitas
+# ChefIA - Organizador de Receitas
 
 ## Executar com Docker
 1. Abra um terminal na pasta do projeto.
