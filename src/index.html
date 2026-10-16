@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="h-full bg-stone-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChefIA — Organizador de Receitas Inteligente</title>
+    <!-- Tailwind CSS (output gerado ou via Play CDN para testes diretos) -->
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body class="h-full font-sans text-stone-800 antialiased flex flex-col md:flex-row">
+
+    <!-- BARRA LATERAL DE NAVEGAÇÃO (Sidebar) -->
+    <aside class="w-full md:w-64 bg-stone-900 text-stone-100 flex flex-col justify-between shrink-0 shadow-lg">
+        <div>
+            <!-- Logo / Nome do Projeto -->
+            <div class="p-6 border-b border-stone-800">
+                <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold block mb-1">Projeto Acadêmico</span>
+                <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                    🍳 ChefIA
+                </h1>
+                <p class="text-xs text-stone-400 mt-1">Organizador de Receitas</p>
+            </div>
+
+            <!-- Navegação Principal com links internos -->
+            <nav class="p-4 space-y-1" aria-label="Navegação Principal">
+                <a href="#proposito" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-stone-300 hover:bg-stone-800 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <span aria-hidden="true">📖</span> Propósito
+                </a>
+                <a href="#receitas" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-stone-300 hover:bg-stone-800 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <span aria-hidden="true">🍲</span> Receitas & Gestão
+                </a>
+                <a href="#resultados" class="flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-stone-300 hover:bg-stone-800 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-amber-400">
+                    <span aria-hidden="true">📊</span> Indicadores e Métricas
+                </a>
+            </nav>
+        </div>
+
+        <!-- Alunos no rodapé da Sidebar -->
+        <div class="p-4 border-t border-stone-800 text-xs text-stone-400 bg-stone-950/50">
+            <p class="font-semibold text-stone-300">Dupla Desenvolvedora:</p>
+            <p class="mt-0.5">Daniel Augusto Silva de Góes</p>
+            <p>Maria da Guia Ferreira da Silva</p>
+            <p class="mt-2 text-amber-400 font-medium">Turma: TSI 2º Período</p>
+        </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="flex-1 flex flex-col min-h-screen overflow-y-auto">
+        
+        <!-- Cabeçalho Superior -->
+        <header class="bg-white border-b border-stone-200 px-6 py-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-xs">
+            <div>
+                <h2 class="text-2xl font-bold text-stone-900 tracking-tight">Painel de Controle Culinário</h2>
+                <p class="text-sm text-stone-500">Gerencie preparações, tempos de etapas e classificações automatizadas.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800">
+                    Tema 10 — Organizador
+                </span>
+            </div>
+        </header>
+
+        <main class="flex-1 p-6 md:p-10 max-w-6xl w-full mx-auto space-y-12">
+
+            <!-- SEÇÃO 1: Propósito -->
+            <section id="proposito" class="bg-white rounded-2xl p-6 md:p-8 shadow-xs border border-stone-200">
+                <div class="max-w-3xl">
+                    <span class="text-amber-600 font-semibold text-sm uppercase tracking-wider">Propósito da Aplicação</span>
+                    <h3 class="text-2xl font-bold text-stone-900 mt-1 mb-4">Padronização e Análise de Preparações Culinárias</h3>
+                    <p class="text-stone-600 leading-relaxed mb-4">
+                        O <strong>ChefIA</strong> foi desenvolvido para otimizar o tempo e a organização na cozinha. Cada receita cadastrada é dividida rigorosamente em <strong>seis etapas ou preparações sequenciais</strong>. O sistema coleta o tempo dedicado a cada fase, calcula automaticamente o tempo total de execução, a média de duração por etapa, e identifica quais etapas ultrapassam o limite de referência estabelecido (15 minutos).
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        Com base na somatória dos tempos, a receita recebe uma classificação automática entre <strong>Rápida</strong> (até 45 min), <strong>Moderada</strong> (de 46 a 75 min) ou <strong>Demorada</strong> (acima de 75 min), garantindo total previsibilidade antes de iniciar o preparo.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 2: Seleção e Cadastro de Receitas -->
+            <section id="receitas" class="space-y-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <span class="text-amber-600 font-semibold text-sm uppercase tracking-wider">Biblioteca de Receitas</span>
+                        <h3 class="text-2xl font-bold text-stone-900">Escolha ou Adicione sua Receita</h3>
+                    </div>
+                    <!-- Seletor de Receita Predefinida -->
+                    <div class="flex items-center gap-3 w-full md:w-auto">
+                        <label for="seletor-receita" class="text-sm font-medium text-stone-700 shrink-0">Receita Ativa:</label>
+                        <select id="seletor-receita" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-500 w-full md:w-64">
+                            <!-- Preenchido via JavaScript -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Exibição Dinâmica da Receita Selecionada -->
+                <article class="bg-white rounded-2xl shadow-xs border border-stone-200 overflow-hidden">
+                    <div class="p-6 md:p-8 border-b border-stone-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-stone-50/50">
+                        <div>
+                            <span id="receita-rendimento" class="inline-block px-2.5 py-1 rounded-md text-xs font-semibold bg-stone-200 text-stone-700 mb-2">Rendimento: -</span>
+                            <h4 id="receita-titulo" class="text-2xl font-bold text-stone-900">-</h4>
+                            <p id="receita-cuidados" class="text-sm text-stone-500 mt-1">Cuidados: -</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="badge-classificacao" class="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-stone-200 text-stone-800">-</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-6 md:p-8">
+                        <!-- Coluna de Ingredientes (Lista Semântica) -->
+                        <div>
+                            <h5 class="text-lg font-semibold text-stone-900 mb-4 flex items-center gap-2">
+                                🛒 Ingredientes Necessários
+                            </h5>
+                            <ul id="lista-ingredientes" class="space-y-2.5">
+                                <!-- Preenchido dinamicamente -->
+                            </ul>
+                        </div>
+
+                        <!-- Coluna de Etapas de Preparo (Lista Semântica com Tempos) -->
+                        <div>
+                            <h5 class="text-lg font-semibold text-stone-900 mb-4 flex items-center gap-2">
+                                ⏱️ 6 Etapas e Tempos de Preparo
+                            </h5>
+                            <ol id="lista-etapas" class="space-y-3">
+                                <!-- Preenchido dinamicamente -->
+                            </ol>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Formulário para Adicionar Nova Receita -->
+                <div class="bg-amber-50/60 rounded-2xl p-6 border border-amber-200/60">
+                    <h5 class="text-lg font-semibold text-stone-900 mb-2 flex items-center gap-2">
+                        ➕ Cadastrar Nova Receita
+                    </h5>
+                    <p class="text-sm text-stone-600 mb-4">Insira o nome, rendimento, cuidados e os tempos exatos para as 6 etapas obrigatórias.</p>
+                    
+                    <form id="form-nova-receita" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="nova-titulo" class="block text-xs font-semibold text-stone-700 uppercase mb-1">Nome da Receita</label>
+                                <input type="text" id="nova-titulo" required placeholder="Ex: Risoto de Funghi" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            <div>
+                                <label for="nova-rendimento" class="block text-xs font-semibold text-stone-700 uppercase mb-1">Rendimento</label>
+                                <input type="text" id="nova-rendimento" required placeholder="Ex: 4 porções" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                            <div>
+                                <label for="nova-cuidados" class="block text-xs font-semibold text-stone-700 uppercase mb-1">Cuidados Especiais</label>
+                                <input type="text" id="nova-cuidados" required placeholder="Ex: Manter fogo baixo" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 uppercase mb-1">Ingredientes (separados por vírgula)</label>
+                            <input type="text" id="nova-ingredientes" required placeholder="Ex: 2 xícaras de arroz, 500ml de caldo, 1 cebola" class="w-full bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-stone-700 uppercase mb-2">Duração das 6 Etapas (em minutos)</label>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+                                <input type="number" min="1" id="etapa-1" required placeholder="Etapa 1" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <input type="number" min="1" id="etapa-2" required placeholder="Etapa 2" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <input type="number" min="1" id="etapa-3" required placeholder="Etapa 3" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <input type="number" min="1" id="etapa-4" required placeholder="Etapa 4" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <input type="number" min="1" id="etapa-5" required placeholder="Etapa 5" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <input type="number" min="1" id="etapa-6" required placeholder="Etapa 6" class="bg-white border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end pt-2">
+                            <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white font-medium px-5 py-2.5 rounded-lg text-sm transition-colors shadow-xs cursor-pointer">
+                                Adicionar Receita à Biblioteca
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- SEÇÃO 3: Resultados Calculados -->
+            <section id="resultados" class="space-y-6">
+                <div>
+                    <span class="text-amber-600 font-semibold text-sm uppercase tracking-wider">Métricas & Indicadores</span>
+                    <h3 class="text-2xl font-bold text-stone-900">Resultados Processados pelo JavaScript</h3>
+                    <p class="text-stone-600 text-sm mt-1">Cálculos automáticos baseados nos dados da receita selecionada (Limite de referência por etapa: <strong>15 minutos</strong>).</p>
+                </div>
+
+                <!-- Grid de Cards de Resultados -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Card 1: Tempo Total -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xs border border-stone-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider font-semibold text-stone-400 block mb-1">Métrica 01</span>
+                            <h4 class="text-sm font-medium text-stone-700">Tempo Total de Preparo</h4>
+                        </div>
+                        <div class="my-4">
+                            <span id="res-total" class="text-3xl font-bold text-stone-900">-</span>
+                        </div>
+                        <p class="text-xs text-stone-500">Soma das 6 etapas da receita.</p>
+                    </div>
+
+                    <!-- Card 2: Média por Etapa -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xs border border-stone-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider font-semibold text-stone-400 block mb-1">Métrica 02</span>
+                            <h4 class="text-sm font-medium text-stone-700">Média por Etapa</h4>
+                        </div>
+                        <div class="my-4">
+                            <span id="res-media" class="text-3xl font-bold text-stone-900">-</span>
+                        </div>
+                        <p class="text-xs text-stone-500">Média aritmética do tempo das fases.</p>
+                    </div>
+
+                    <!-- Card 3: Etapas Acima do Limite -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xs border border-stone-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider font-semibold text-stone-400 block mb-1">Métrica 03</span>
+                            <h4 class="text-sm font-medium text-stone-700">Etapas > 15 min</h4>
+                        </div>
+                        <div class="my-4">
+                            <span id="res-ultrapassam" class="text-3xl font-bold text-stone-900">-</span>
+                        </div>
+                        <p class="text-xs text-stone-500">Quantidade de fases acima do limite.</p>
+                    </div>
+
+                    <!-- Card 4: Classificação Final -->
+                    <div class="bg-white rounded-2xl p-6 shadow-xs border border-stone-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider font-semibold text-stone-400 block mb-1">Métrica 04</span>
+                            <h4 class="text-sm font-medium text-stone-700">Classificação Final</h4>
+                        </div>
+                        <div class="my-4">
+                            <span id="res-classificacao" class="text-xl font-bold text-amber-700 bg-amber-50 px-3 py-1 rounded-lg inline-block">-</span>
+                        </div>
+                        <p class="text-xs text-stone-500">Rápida, Moderada ou Demorada.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- RODAPÉ -->
+        <footer class="bg-stone-900 text-stone-400 py-8 px-6 mt-16 border-t border-stone-800">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+                <div>
+                    <p class="text-white font-semibold text-sm">ChefIA — Organizador de Receitas</p>
+                    <p class="text-xs text-stone-500 mt-0.5">Projeto desenvolvido para avaliação acadêmica.</p>
+                </div>
+                <div class="text-xs">
+                    <p class="text-stone-300 font-medium">Desenvolvido por:</p>
+                    <p class="text-stone-400">Daniel Augusto Silva de Góes & Maria da Guia Ferreira da Silva</p>
+                    <p class="text-amber-400 mt-1 font-semibold">Turma: TSI 2º Período</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Script JavaScript Conectado -->
+    <script src="./script.js" defer></script>
+</body>
+</html>
