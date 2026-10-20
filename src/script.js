@@ -1,6 +1,3 @@
-// ==========================================
-// DADOS INICIAIS (Array, Strings, Numbers, Booleans)
-// ==========================================
 let receitas = [
     {
         id: 1,
@@ -71,57 +68,55 @@ let receitas = [
     }
 ];
 
+
 const LIMITE_ETAPA_MINUTOS = 15;
+const CHAVE_LOCAL = "chefdupla_receitas_v1";
 
-// ==========================================
-// FUNÇÕES COM PARÂMETROS E RETORNO (Mínimo de 3)
-// ==========================================
+function carregarReceitas() {
+    try {
+        const dadosSalvos = localStorage.getItem(CHAVE_LOCAL);
+        if (dadosSalvos) {
+            const receitasSalvas = JSON.parse(dadosSalvos);
+            if (Array.isArray(receitasSalvas) && receitasSalvas.length > 0) return receitasSalvas;
+        }
+    } catch (erro) {
+        console.warn("Não foi possível carregar as receitas salvas.", erro);
+    }
+    return receitas;
+}
 
-// Função 1: Calcula o tempo total somando as etapas
+function salvarReceitas() {
+    try {
+        localStorage.setItem(CHAVE_LOCAL, JSON.stringify(receitas));
+    } catch (erro) {
+        alert("Não foi possível salvar os dados neste navegador. Verifique o espaço disponível.");
+        console.error(erro);
+    }
+}
+
 function calcularTempoTotal(etapas) {
     let total = 0;
+    for (const etapa of etapas) total += Number(etapa.tempo) || 0;
+    return total;
+}
+
+function calcularMediaEtapas(etapas, tempoTotal) {
+    return etapas.length ? tempoTotal / etapas.length : 0;
+}
+
+function contarEtapasAcimaLimite(etapas, limite) {
+    let total = 0;
     for (const etapa of etapas) {
-        total += etapa.tempo;
+        if (Number(etapa.tempo) > limite) total++;
     }
     return total;
 }
 
-// Função 2: Calcula a média aritmética do tempo por etapa
-function calcularMediaEtapas(etapas, tempoTotal) {
-    if (etapas.length === 0) return 0;
-    return tempoTotal / etapas.length;
-}
-
-// Função 3: Conta quantas etapas ultrapassam o limite estipulado
-function contarEtapasAcimaLimite(etapas, limite) {
-    let contador = 0;
-    for (const etapa of etapas) {
-        if (etapa.tempo > limite) {
-            contador++;
-        }
-    }
-    return contador;
-}
-
-// Função 4: Classifica a receita utilizando cadeia if, else if e else
 function classificarReceita(tempoTotal) {
-    let classificacao = "";
-    let statusAtivo = true; // Exemplo de uso de boolean
-
-    if (tempoTotal <= 45 && statusAtivo) {
-        classificacao = "Rápida";
-    } else if (tempoTotal > 45 && tempoTotal <= 75) {
-        classificacao = "Moderada";
-    } else {
-        classificacao = "Demorada";
-    }
-
-    return classificacao;
+    if (tempoTotal <= 45) return "Rápida";
+    if (tempoTotal <= 75) return "Moderada";
+    return "Demorada";
 }
-
-// ==========================================
-// MANIPULAÇÃO DA INTERFACE (DOM e Eventos)
-// ==========================================
 
 const seletorReceita = document.getElementById("seletor-receita");
 const receitaTitulo = document.getElementById("receita-titulo");
@@ -130,18 +125,15 @@ const receitaCuidados = document.getElementById("receita-cuidados");
 const listaIngredientes = document.getElementById("lista-ingredientes");
 const listaEtapas = document.getElementById("lista-etapas");
 const badgeClassificacao = document.getElementById("badge-classificacao");
-
-// Elementos de Resultados no HTML (usando textContent)
 const resTotal = document.getElementById("res-total");
 const resMedia = document.getElementById("res-media");
 const resUltrapassam = document.getElementById("res-ultrapassam");
 const resClassificacao = document.getElementById("res-classificacao");
-
-// Formulário de nova receita
 const formNovaReceita = document.getElementById("form-nova-receita");
 
-// Preenche o dropdown de seleção de receitas
-function atualizarSeletor() {
+receitas = carregarReceitas();
+
+function atualizarSeletor(idSelecionado) {
     seletorReceita.innerHTML = "";
     for (const receita of receitas) {
         const option = document.createElement("option");
@@ -149,27 +141,105 @@ function atualizarSeletor() {
         option.textContent = receita.titulo;
         seletorReceita.appendChild(option);
     }
+    if (idSelecionado !== undefined) seletorReceita.value = String(idSelecionado);
 }
 
-// Exibe a receita selecionada na interface
 function exibirReceita(idReceita) {
-    let receitaAtual = null;
-    for (const r of receitas) {
-        if (r.id == idReceita) {
-            receitaAtual = r;
-            break;
-        }
-    }
-
+    const receitaAtual = receitas.find(r => String(r.id) === String(idReceita));
     if (!receitaAtual) return;
 
-    // Atualiza textos básicos
     receitaTitulo.textContent = receitaAtual.titulo;
     receitaRendimento.textContent = `Rendimento: ${receitaAtual.rendimento}`;
     receitaCuidados.textContent = `Cuidados: ${receitaAtual.cuidados}`;
 
-    // Preenche lista de ingredientes
     listaIngredientes.innerHTML = "";
     for (const ingrediente of receitaAtual.ingredientes) {
         const li = document.createElement("li");
-        li.className = "flex items-center gap-2 text-sm
+        li.className = "flex items-center gap-2 text-sm text-stone-700";
+        li.textContent = "• " + ingrediente;
+        listaIngredientes.appendChild(li);
+    }
+
+    listaEtapas.innerHTML = "";
+    for (const etapa of receitaAtual.etapas) {
+        const li = document.createElement("li");
+        li.className = "flex items-center justify-between gap-3 rounded-lg bg-stone-50 p-3 text-sm";
+        const nome = document.createElement("span");
+        nome.className = "text-stone-700";
+        nome.textContent = etapa.nome;
+        const tempo = document.createElement("strong");
+        tempo.className = "shrink-0 text-amber-700";
+        tempo.textContent = `${etapa.tempo} min`;
+        li.append(nome, tempo);
+        listaEtapas.appendChild(li);
+    }
+
+    const total = calcularTempoTotal(receitaAtual.etapas);
+    const media = calcularMediaEtapas(receitaAtual.etapas, total);
+    const acima = contarEtapasAcimaLimite(receitaAtual.etapas, LIMITE_ETAPA_MINUTOS);
+    const classificacao = classificarReceita(total);
+
+    resTotal.textContent = `${total} min`;
+    resMedia.textContent = `${media.toFixed(1).replace(".", ",")} min`;
+    resUltrapassam.textContent = acima;
+    resClassificacao.textContent = classificacao;
+    badgeClassificacao.textContent = classificacao;
+}
+
+formNovaReceita.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    const titulo = document.getElementById("nova-titulo").value.trim();
+    const rendimento = document.getElementById("nova-rendimento").value.trim();
+    const cuidados = document.getElementById("nova-cuidados").value.trim();
+    const ingredientesTexto = document.getElementById("nova-ingredientes").value.trim();
+
+    const tempos = [];
+    for (let i = 1; i <= 6; i++) {
+        const campo = document.getElementById(`etapa-${i}`);
+        const tempo = Number(campo.value);
+        if (!Number.isFinite(tempo) || tempo < 1) {
+            alert(`Informe um tempo válido para a etapa ${i}.`);
+            campo.focus();
+            return;
+        }
+        tempos.push(tempo);
+    }
+
+    const nomesEtapas = [
+        "Separação dos ingredientes",
+        "Preparação inicial",
+        "Preparo principal",
+        "Cozimento",
+        "Finalização",
+        "Montagem e serviço"
+    ];
+
+    const novaReceita = {
+        id: Date.now(),
+        titulo,
+        rendimento,
+        cuidados,
+        ingredientes: ingredientesTexto.split(",").map(item => item.trim()).filter(Boolean),
+        etapas: tempos.map((tempo, indice) => ({ nome: nomesEtapas[indice], tempo }))
+    };
+
+    if (!novaReceita.ingredientes.length) {
+        alert("Adicione pelo menos um ingrediente.");
+        return;
+    }
+
+    receitas.push(novaReceita);
+    salvarReceitas();
+    atualizarSeletor(novaReceita.id);
+    exibirReceita(novaReceita.id);
+    formNovaReceita.reset();
+    alert("Receita cadastrada e salva neste navegador!");
+});
+
+seletorReceita.addEventListener("change", function () {
+    exibirReceita(this.value);
+});
+
+atualizarSeletor(receitas[0]?.id);
+if (receitas.length) exibirReceita(receitas[0].id);

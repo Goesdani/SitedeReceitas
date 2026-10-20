@@ -1,21 +1,34 @@
-# ChefIA - Organizador de Receitas
+# ChefIA — Organizador de Receitas
+
+Projeto em HTML, CSS e JavaScript com Vite para executar localmente ou pelo Docker.
+
+## Executar com npm
+
+Requisitos: Node.js 20 ou superior. Na pasta do projeto, execute:
+
+```bash
+npm install
+npm run dev
+```
+
+Abra http://localhost:5173. O Vite usa a pasta `src` como raiz do site, onde estão o `index.html`, `script.js` e `output.css`.
 
 ## Executar com Docker
-1. Abra um terminal na pasta do projeto.
-2. Execute `docker compose up` para compilar o CSS do Tailwind em modo de observação.
-3. Para visualizar, abra `src/index.html` no navegador. Para o primeiro build, também pode executar `npm install` e `npm run build:css`.
 
-## Executar sem Docker
-1. Instale Node.js.
-2. Na pasta do projeto, execute `npm install`.
-3. Execute `npm run build:css`.
-4. Abra `src/index.html` no navegador.
+Na pasta onde está o `compose.yaml`, execute:
+
+```bash
+docker compose up --build
+```
+
+Abra http://localhost:5173. Para parar, use `Ctrl+C` e depois `docker compose down`.
+
+## Persistência local
+
+As receitas cadastradas são salvas no `localStorage` do navegador. Permanecem após atualizar a página ou reiniciar o Docker, desde que seja usado o mesmo navegador e endereço. Limpar os dados do navegador remove as receitas. O armazenamento não é compartilhado entre computadores ou navegadores.
 
 ## Funcionalidades
-- Três receitas iniciais com ingredientes, rendimento, seis etapas, orientações e cuidados.
-- Navegação lateral para trocar de receita e acessar seções.
-- Adição de receitas com formulário.
-- Cálculo de tempo total, média, etapas acima do limite e classificação Rápida/Moderada/Demorada.
-- Integrantes: Daniel Augusto Silva de Góes e Maria da Guia Ferreira da Silva — TSI, 2º Período.
 
-Observação: receitas adicionadas pelo formulário permanecem na memória enquanto a página estiver aberta. Para cadastrar ingredientes e orientações específicos, edite os dados no início de `src/script.js`.
+- Três receitas iniciais.
+- Cadastro de receitas com ingredientes e seis etapas.
+- Cálculo do tempo total, média por etapa, etapas acima de 15 minutos e classificação.
